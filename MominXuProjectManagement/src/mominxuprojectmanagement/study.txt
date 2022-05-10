@@ -1,0 +1,29 @@
+1 
+System
+Is a solution for a problem using software and hardware. 
+Key components of a system are: 
+the client (requests for a solution and provides money)
+analysts (gather and interpret data) 
+designers & developers (think and implement a solution to a task) 
+testers (test if solution works)
+users (the demographic using the system)
+2 
+How to Measure Success
+Should solve original problem
+Is easy to maintain and manage
+Is scalable and dynamic to meet the needs of the client
+There is a efficient support system available to the client
+Is developed on time and is good to go
+Client is satisfied with the product
+3 
+Intro Software Development Process
+High-quality software needs organization and rigorous planning through diagrammatic conventions such as the waterfall model and the gantt chart. More on these later.
+4 
+The Waterfall Model
+There are many phases in this model. A mistake or realization in one phase will mean the developers should backup, and return to work on the previous phase.
+Problem Statement
+Analysis
+Design 
+Implementation 
+Integration /Test
+Maintenance

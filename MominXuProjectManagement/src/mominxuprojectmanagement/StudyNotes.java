@@ -42,7 +42,7 @@ public class StudyNotes extends javax.swing.JFrame {
         String topicName;
         String studyMaterial = "";
         
-        int [] arrayOfTopics = new
+        int [] arrayOfTopics = news;
         //try catch to read the file and store the integers into an array
         try {
             File f = new File("src\\mominxuprojectmanagement\\study.txt");

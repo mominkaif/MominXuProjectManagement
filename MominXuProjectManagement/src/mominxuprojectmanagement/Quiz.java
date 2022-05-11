@@ -11,6 +11,7 @@ package mominxuprojectmanagement;
 public class Quiz extends javax.swing.JFrame {
     
     MominXuProjectManagement mainWindow;
+    Question[] questions = new Question[10];
 
     /**
      * Creates new form Quiz
@@ -19,6 +20,8 @@ public class Quiz extends javax.swing.JFrame {
         initComponents();
         
         mainWindow = m;
+        
+        readData();
     }
 
     /**
@@ -137,7 +140,9 @@ public class Quiz extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
-    
+    private void readData() {
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton a;
@@ -152,4 +157,5 @@ public class Quiz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
+
 }

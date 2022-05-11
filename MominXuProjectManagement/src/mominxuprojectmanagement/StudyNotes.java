@@ -29,16 +29,32 @@ public class StudyNotes extends javax.swing.JFrame {
         mainWindow = m;
         
         readData();
+        for (int i = 0; i < 7; i++) {
+           System.out.println(); 
+        }
         
     }
     
     private void readData() {
+        int totalNumTopics;
+        int counter = 0;
+        int numberOfLines = 10;
+        String topicName;
+        String studyMaterial = "";
+        
+        int [] arrayOfTopics = new
         //try catch to read the file and store the integers into an array
         try {
             File f = new File("src\\mominxuprojectmanagement\\study.txt");
             Scanner s = new Scanner(f);
-            while(s.hasNextLine()){
-                systems = systems+"\n"+s.nextLine();
+            totalNumTopics = Integer.parseInt(s.nextLine());
+            for (int i = 0; i < totalNumTopics; i++) {
+                topicName = s.nextLine();
+                while(counter != numberOfLines + 1){
+                    studyMaterial += s.nextLine(); 
+                    counter++;
+                }
+                StudyTopics topic = new StudyTopics(i, topicName, studyMaterial);
             }
         } catch (FileNotFoundException e) {
             System.out.println("ERROR! " + e);
@@ -154,6 +170,7 @@ public class StudyNotes extends javax.swing.JFrame {
 
     private void topicOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topicOptionActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_topicOptionActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed

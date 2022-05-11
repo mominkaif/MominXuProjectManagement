@@ -23,11 +23,12 @@ public class Question {
     }
 
     public Question(String q, String optA, String optB, String optC, String optD, String ans) {
-        q = "";
-        optA = "";
-        optB = "";
-        optC = "";
-        optD = "";
-        ans = "";
+        this.q = q;
+        this.optA = optA;
+        this.optB = optB;
+        this.optC = optC;
+        this.optD = optD;
+        this.ans = ans;
+        //david is awesome
     }
 }

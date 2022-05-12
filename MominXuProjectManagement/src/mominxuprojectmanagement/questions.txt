@@ -5,7 +5,6 @@ Machine
 Car
 B
 The client is a key component, they request a solution and provides money.
-
 Which questions should you ask when measuring success?
 Is easy to maintain and manage?
 Is scalable and dynamic to meet the needs of the client?
@@ -13,7 +12,6 @@ There is a efficient support system available to the client?
 All of the above.
 D
 All the above options are question you should ask when measuring success.
-
 What does high-quality software require?
 Organization
 Money
@@ -21,7 +19,6 @@ Rigorous planning
 Both A and C are correct.
 D
 High-quality software needs organization and rigorous planning
-
 What does SDLC stand for?
 Super Duper Local Computer.
 Software Development Life Cycle
@@ -29,7 +26,6 @@ Software Development Literature Composition
 Software Development Live Circle
 B
 SDLC stands for Software Development Life Cycle
-
 Who developed the Waterfall Model?
 Dr Winston Royce
 David Xu
@@ -37,7 +33,6 @@ Galileo Galilei
 None of the above.
 A
 Dr Winston Royce developed the Waterfall Model.
-
 What is a Gantt chart good for?
 Nothing
 Store changes

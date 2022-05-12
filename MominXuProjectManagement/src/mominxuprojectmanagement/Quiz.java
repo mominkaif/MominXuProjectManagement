@@ -14,9 +14,12 @@ import java.util.Scanner;
  */
 public class Quiz extends javax.swing.JFrame {
     
+    int total = 0;
     MominXuProjectManagement mainWindow;
     Question[] questions = new Question[5];
     private String q, optA, optB, optC, optD, ans, reason;
+    int counter = 0;
+    int nextCounter = 1;
 
     /**
      * Creates new form Quiz
@@ -27,6 +30,13 @@ public class Quiz extends javax.swing.JFrame {
         mainWindow = m;
         
         readData();
+        
+        quest.setText((questions[0]).getQ());
+        a.setText((questions[0]).getA());
+        b.setText((questions[0]).getB());
+        c.setText((questions[0]).getC());
+        d.setText((questions[0]).getD());
+        
     }
 
     /**
@@ -41,28 +51,29 @@ public class Quiz extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jLabel2 = new javax.swing.JLabel();
+        why = new javax.swing.JTextArea();
+        quest = new javax.swing.JLabel();
         a = new javax.swing.JRadioButton();
         b = new javax.swing.JRadioButton();
         c = new javax.swing.JRadioButton();
         d = new javax.swing.JRadioButton();
         jButton1 = new javax.swing.JButton();
         back = new javax.swing.JButton();
+        next = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
         jLabel1.setText("Quiz");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Reason for correct answer");
-        jScrollPane1.setViewportView(jTextArea1);
+        why.setColumns(20);
+        why.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        why.setRows(5);
+        why.setText("Reason for correct answer");
+        jScrollPane1.setViewportView(why);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jLabel2.setText("Question");
+        quest.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        quest.setText("Question");
 
         buttonGroup1.add(a);
         a.setText("A");
@@ -77,11 +88,23 @@ public class Quiz extends javax.swing.JFrame {
         d.setText("D");
 
         jButton1.setText("Check Answer");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         back.setText("Back to Main Menu");
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backActionPerformed(evt);
+            }
+        });
+
+        next.setText("Next");
+        next.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextActionPerformed(evt);
             }
         });
 
@@ -95,7 +118,7 @@ public class Quiz extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(quest, javax.swing.GroupLayout.PREFERRED_SIZE, 731, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(37, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -103,7 +126,8 @@ public class Quiz extends javax.swing.JFrame {
                             .addComponent(a)
                             .addComponent(b)
                             .addComponent(c)
-                            .addComponent(d))
+                            .addComponent(d)
+                            .addComponent(next))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))))
@@ -118,7 +142,7 @@ public class Quiz extends javax.swing.JFrame {
                 .addGap(45, 45, 45)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(quest, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -130,7 +154,9 @@ public class Quiz extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(d)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1))
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(next))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 289, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(back)
@@ -144,6 +170,39 @@ public class Quiz extends javax.swing.JFrame {
         mainWindow.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String selected = "";
+        
+        if(a.isSelected()){
+            selected = a.getText();
+        } else if(b.isSelected()){
+            selected = b.getText();
+        }else if(c.isSelected()){
+            selected = c.getText();
+        }else if(d.isSelected()){
+            selected = d.getText();
+        }
+        
+        if(selected.equals(questions[counter].getAns())){
+            total +=1;
+        }
+        why.setText(questions[counter].getReason());
+        counter += 1;
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+        
+        why.setText(" ");
+        quest.setText((questions[nextCounter]).getQ());
+        a.setText((questions[nextCounter]).getA());
+        b.setText((questions[nextCounter]).getB());
+        c.setText((questions[nextCounter]).getC());
+        d.setText((questions[nextCounter]).getD());
+        
+        nextCounter += 1;
+    }//GEN-LAST:event_nextActionPerformed
 
     /**
      * readDatat method reads from the questions text file
@@ -180,9 +239,10 @@ public class Quiz extends javax.swing.JFrame {
     private javax.swing.JRadioButton d;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton next;
+    private javax.swing.JLabel quest;
+    private javax.swing.JTextArea why;
     // End of variables declaration//GEN-END:variables
 
 }

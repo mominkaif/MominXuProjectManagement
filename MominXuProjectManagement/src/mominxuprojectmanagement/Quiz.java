@@ -4,6 +4,10 @@
  */
 package mominxuprojectmanagement;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /**
  *
  * @author kaifm
@@ -11,7 +15,8 @@ package mominxuprojectmanagement;
 public class Quiz extends javax.swing.JFrame {
     
     MominXuProjectManagement mainWindow;
-    Question[] questions = new Question[10];
+    Question[] questions = new Question[5];
+    private String q, optA, optB, optC, optD, ans, reason;
 
     /**
      * Creates new form Quiz
@@ -140,8 +145,30 @@ public class Quiz extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
+    /**
+     * readDatat method reads from the questions text file
+     */
     private void readData() {
-        
+        //try catch to read the file and store the integers into an array
+        try {
+            File f = new File("src\\mominxuprojectmanagement\\questions.txt");
+            Scanner s = new Scanner(f);
+            for (int i = 0; i < 5; i++) {
+                q = s.nextLine();
+                optA = s.nextLine();
+                optB = s.nextLine();
+                optC = s.nextLine();
+                optD = s.nextLine();
+                ans = s.nextLine();
+                reason = s.nextLine();
+                Question question = new Question(q, optA, optB, optC, optD, ans, reason);
+                questions[i] = question;
+                
+                System.out.println(question.toString());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("ERROR! " + e);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

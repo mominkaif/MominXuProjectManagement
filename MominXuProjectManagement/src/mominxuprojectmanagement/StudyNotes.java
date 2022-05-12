@@ -13,9 +13,9 @@ import java.util.Scanner;
  * @author kaifm
  */
 public class StudyNotes extends javax.swing.JFrame {
-    
-    private int totalNumTopics = 0;
-    private StudyTopics[] topicsToStudy;
+
+    private int totalNumTopics = 7;
+    private StudyTopics[] topicsToStudy = new StudyTopics[totalNumTopics];
     MominXuProjectManagement mainWindow;
     String systems = "";
     String success = "";
@@ -27,44 +27,44 @@ public class StudyNotes extends javax.swing.JFrame {
      */
     public StudyNotes(MominXuProjectManagement m) {
         initComponents();
-        
+
         mainWindow = m;
-        
+
         readData();
         for (int i = 0; i < 7; i++) {
-            System.out.println(topicsToStudy[i]); 
+            System.out.println(topicsToStudy[i].toString());
         }
-        
+
     }
-    
+
     private void readData() {
-        
+
         int counter = 0;
-        int numberOfLines = 10;
-        
-        String topicName;
+        int numLines = 9;
+
+        String topicName = "";
         String studyMaterial = "";
-        
-        //try catch to read the file and store the integers into an array
+
+        StudyTopics topic;
+
+        //try-catch to read the file and store the info into an array
         try {
             File f = new File("src\\mominxuprojectmanagement\\study.txt");
             Scanner s = new Scanner(f);
-            totalNumTopics = Integer.parseInt(s.nextLine());
-            StudyTopics[] topicsToStudy = new StudyTopics[totalNumTopics];
             for (int i = 0; i < totalNumTopics; i++) {
                 topicName = s.nextLine();
-                while(counter < numberOfLines){
-                    studyMaterial += s.nextLine(); 
-                    counter++;
+                for (int j = 0; j < numLines; j++) {
+                    studyMaterial += s.nextLine() + "\n";
                 }
-                counter = 0;
-                StudyTopics topic = new StudyTopics(i, topicName, studyMaterial);
+
+                topic = new StudyTopics(i, topicName, studyMaterial);
                 topicsToStudy[i] = topic;
+                studyMaterial = "";
             }
         } catch (FileNotFoundException e) {
             System.out.println("ERROR! " + e);
         }
-        
+
     }
 
     /**
@@ -82,7 +82,7 @@ public class StudyNotes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         topicOption = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        go = new javax.swing.JButton();
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,8 +108,13 @@ public class StudyNotes extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setBackground(new java.awt.Color(0, 250, 0));
-        jButton1.setText("Go");
+        go.setBackground(new java.awt.Color(0, 250, 0));
+        go.setText("Go");
+        go.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                goActionPerformed(evt);
+            }
+        });
 
         back.setText("Back to Main Menu");
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +142,7 @@ public class StudyNotes extends javax.swing.JFrame {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(go)
                                 .addGap(47, 47, 47))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -162,7 +167,7 @@ public class StudyNotes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(jButton1))
+                        .addComponent(go))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(back)))
@@ -174,20 +179,24 @@ public class StudyNotes extends javax.swing.JFrame {
 
     private void topicOptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_topicOptionActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_topicOptionActionPerformed
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         mainWindow.setVisible(true);
         this.setVisible(false);
+
     }//GEN-LAST:event_backActionPerformed
 
-    
+    private void goActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goActionPerformed
+        
+    }//GEN-LAST:event_goActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton go;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

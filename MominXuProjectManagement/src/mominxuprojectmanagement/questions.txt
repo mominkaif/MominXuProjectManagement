@@ -40,3 +40,31 @@ Visualization
 Persuasion
 Visualization
 Gantt Chart is an extremely helpful tool to visualize progress
+Based on the Waterfall Model, what should developers do if they notice a mistake?
+Backup
+Ignore
+Assign to someone else and continue
+None of the above
+Backup
+If noticed a mistake, you should return to work on the previous phase.
+Which of the following is the correct color combo for a Gantt chart?
+Red and yellow
+Blue and Black
+Red and green
+Blue and red
+Blue and red
+Red represents uncompleted work. Blue represents completed work.
+What does UML stand for?
+Unique Method Loop
+Unified Modeling Language
+Unified Method Logistics
+Both A and B
+Unified Modeling Language
+UML Stands for Unified Modeling Language.
+When is it cheapest to solve a problem in the SDLC cycle?
+Later the better
+In the middle
+Earlier the better
+It doesnt matter
+Earlier the better
+Issues found earlier in the SDLC are much cheaper to fix than later on

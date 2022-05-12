@@ -29,8 +29,9 @@ Intro Software Development Process
 
  
 The Waterfall Model
-    There are many phases in this model. A mistake or realization in one phase 
-    will mean the developers should backup, and return to work on the previous phase.
+    Dr Winston Royce developed the Waterfall Model. There are many phases in 
+    this model. A mistake or realization in one phase will mean the developers 
+    should backup, and return to work on the previous phase.
         -Problem Statement
         -Analysis
         -Design 

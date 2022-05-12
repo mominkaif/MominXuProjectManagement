@@ -14,6 +14,8 @@ import java.util.Scanner;
  */
 public class StudyNotes extends javax.swing.JFrame {
     
+    private int totalNumTopics = 0;
+    private StudyTopics[] topicsToStudy;
     MominXuProjectManagement mainWindow;
     String systems = "";
     String success = "";
@@ -30,37 +32,39 @@ public class StudyNotes extends javax.swing.JFrame {
         
         readData();
         for (int i = 0; i < 7; i++) {
-           System.out.println(); 
+            System.out.println(topicsToStudy[i]); 
         }
         
     }
     
     private void readData() {
-        int totalNumTopics;
+        
         int counter = 0;
         int numberOfLines = 10;
+        
         String topicName;
         String studyMaterial = "";
         
-        //int [] arrayOfTopics = news;
         //try catch to read the file and store the integers into an array
         try {
             File f = new File("src\\mominxuprojectmanagement\\study.txt");
             Scanner s = new Scanner(f);
             totalNumTopics = Integer.parseInt(s.nextLine());
+            StudyTopics[] topicsToStudy = new StudyTopics[totalNumTopics];
             for (int i = 0; i < totalNumTopics; i++) {
                 topicName = s.nextLine();
-                while(counter != numberOfLines + 1){
+                while(counter < numberOfLines){
                     studyMaterial += s.nextLine(); 
                     counter++;
                 }
+                counter = 0;
                 StudyTopics topic = new StudyTopics(i, topicName, studyMaterial);
+                topicsToStudy[i] = topic;
             }
         } catch (FileNotFoundException e) {
             System.out.println("ERROR! " + e);
         }
         
-        System.out.println(systems);
     }
 
     /**
@@ -96,7 +100,7 @@ public class StudyNotes extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         topicOption.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        topicOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Systems", "Measuring Success", "Intro to the SDLC", "Waterfall Model" }));
+        topicOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Systems", "Measuring Success", "Intro to the SDLC", "Waterfall Model", "Gantt Chart", "Unified Modeling Language (UML)", "Other Helpful Info" }));
         topicOption.setToolTipText("");
         topicOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

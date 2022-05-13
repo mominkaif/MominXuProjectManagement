@@ -239,13 +239,18 @@ public class Quiz extends javax.swing.JFrame {
 
         int counter = 0;
         int nextCounter = 1;
+        total = 0;
         quest.setText((questions[0]).getQ());
         a.setText((questions[0]).getA());
         b.setText((questions[0]).getB());
         c.setText((questions[0]).getC());
         d.setText((questions[0]).getD());
-        score.setText(" ");
-        recom.setText(" ");
+        score.setText("results will be shown here at the end");
+        recom.setText("will be given at the end");
+        why.setText("Reason for correct answer");
+        results.setEnabled(false);
+        jButton1.setEnabled(true);
+        
 
         mainWindow.setVisible(true);
         this.setVisible(false);
@@ -253,10 +258,6 @@ public class Quiz extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String selected = "";
-
-        if (counter == 9) {
-
-        }
 
         if (a.isSelected()) {
             selected = a.getText();

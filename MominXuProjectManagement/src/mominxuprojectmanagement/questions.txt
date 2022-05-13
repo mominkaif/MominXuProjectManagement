@@ -1,8 +1,8 @@
 Which of the following is a key component of a system?
-Screws
-The Client
-Machine
-Car
+A) Screws
+B) The Client
+C) Machine
+D) Car
 The Client
 The client is a key component, they request a solution and provides money.
 Which questions should you ask when measuring success?

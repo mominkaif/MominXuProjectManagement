@@ -23,14 +23,16 @@ public class Quiz extends javax.swing.JFrame {
     //attributes of the question
     private String q, optA, optB, optC, optD, ans, reason;
     //counters
-    int counter = 0;
-    int nextCounter = 1;
+    int counter;
+    int nextCounter;
 
     /**
      * Creates new form Quiz
      */
     public Quiz(MominXuProjectManagement m) {
         initComponents();
+        counter = 0;
+        nextCounter = 1;
 
         results.setEnabled(false);
 
@@ -259,6 +261,7 @@ public class Quiz extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String selected = "";
 
+        //assigns selected to the option chosen
         if (a.isSelected()) {
             selected = a.getText();
         } else if (b.isSelected()) {
@@ -269,6 +272,7 @@ public class Quiz extends javax.swing.JFrame {
             selected = d.getText();
         }
 
+        //if its correct answer, up total by 1
         if (selected.equals(questions[counter].getAns())) {
             total += 1;
         }
@@ -283,6 +287,7 @@ public class Quiz extends javax.swing.JFrame {
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         jButton1.setEnabled(true);
 
+        //update the labels with the next question
         why.setText(" ");
         quest.setText((questions[nextCounter]).getQ());
         a.setText((questions[nextCounter]).getA());

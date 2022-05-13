@@ -6,6 +6,7 @@ package mominxuprojectmanagement;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Scanner;
 
 /**
@@ -237,7 +238,6 @@ public class Quiz extends javax.swing.JFrame {
         why.setText("Reason for correct answer");
         results.setEnabled(false);
         jButton1.setEnabled(true);
-        
 
         mainWindow.setVisible(true);
         this.setVisible(false);
@@ -304,7 +304,7 @@ public class Quiz extends javax.swing.JFrame {
     private void readData() {
         //try catch to read the file and store the integers into an array
         try {
-            File f = new File("src\\mominxuprojectmanagement\\questions.txt");
+            InputStream f = Quiz.class.getResourceAsStream("questions.txt");
             Scanner s = new Scanner(f);
             for (int i = 0; i < 10; i++) {
                 q = s.nextLine();
@@ -319,7 +319,7 @@ public class Quiz extends javax.swing.JFrame {
 
                 System.out.println(question.toString());
             }
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             System.out.println("ERROR! " + e);
         }
     }

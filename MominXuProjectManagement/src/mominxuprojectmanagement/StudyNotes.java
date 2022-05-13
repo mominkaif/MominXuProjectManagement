@@ -1,6 +1,10 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Author: David Xu
+ * Date: 2022-05-12
+ * UNIT 6 SUMMATIVE
+ * Study Notes menu, JFrame that allows user to pick a topic to study from 7 choices
+ * in a combo box, after selecting a topic, and pressing the GO button, the
+ * text area on the right will be set to the topic info, read from a data files
  */
 package mominxuprojectmanagement;
 
@@ -13,54 +17,65 @@ import java.util.Scanner;
  * @author kaifm
  */
 public class StudyNotes extends javax.swing.JFrame {
-
-    private int totalNumTopics = 7;
+    //encapsulate attributes
+    private int totalNumTopics = 7; //there are 7 study topics
+    //instantiate array of StudyTopics
     private StudyTopics[] topicsToStudy = new StudyTopics[totalNumTopics];
-    MominXuProjectManagement mainWindow;
-    String systems = "";
-    String success = "";
-    String introToSDLC = "";
-    String waterfall = "";
+    //for main menu
+    private MominXuProjectManagement mainWindow;
 
     /**
      * Creates new form StudyNotes
      */
     public StudyNotes(MominXuProjectManagement m) {
         initComponents();
-
+        
         mainWindow = m;
-
+        //call method to read from data file and store in array
         readData();
-        for (int i = 0; i < 7; i++) {
-            System.out.println(topicsToStudy[i].toString());
-        }
-
     }
-
+    /**
+     * readData method, tries to reference a file, attach a scanner, and reads 
+     * the title of the topic, and the study material for the topic a total of 
+     * seven times.
+     */
     private void readData() {
-
-        int counter = 0;
+        //arbitrary number, each "study material" for a topic in the data file
+        //has 9 lines. Some topics will fill most of the nine lines while others
+        //will barely fill any. This makes it easier to place information
+        //in the array
         int numLines = 9;
 
-        String topicName = "";
+        //declare variables
+        String topicName;
         String studyMaterial = "";
 
         StudyTopics topic;
 
         //try-catch to read the file and store the info into an array
         try {
+            //reference file
             File f = new File("src\\mominxuprojectmanagement\\study.txt");
+            //attach scanner
             Scanner s = new Scanner(f);
+            //loop a total of secen times for seven topics
             for (int i = 0; i < totalNumTopics; i++) {
+                //first line is always the topic name
                 topicName = s.nextLine();
+                //loop a total of nine times to read all the study material
+                //that coincides with the specific topic
                 for (int j = 0; j < numLines; j++) {
+                    //append next line
                     studyMaterial += s.nextLine() + "\n";
                 }
-
+                //instantiate StudyTopic object
                 topic = new StudyTopics(i, topicName, studyMaterial);
+                //store in index i, of the array
                 topicsToStudy[i] = topic;
+                //reset String so it does not append for every topic
                 studyMaterial = "";
             }
+        //otherwise file not found, print error
         } catch (FileNotFoundException e) {
             System.out.println("ERROR! " + e);
         }
@@ -80,9 +95,9 @@ public class StudyNotes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtADisplayInfoTopic = new javax.swing.JTextArea();
         topicOption = new javax.swing.JComboBox<>();
-        go = new javax.swing.JButton();
+        btnGo = new javax.swing.JButton();
         back = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -93,11 +108,11 @@ public class StudyNotes extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Select a topic: ");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        jTextArea1.setRows(5);
-        jTextArea1.setText("Selected notes will appear here");
-        jScrollPane1.setViewportView(jTextArea1);
+        txtADisplayInfoTopic.setColumns(20);
+        txtADisplayInfoTopic.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        txtADisplayInfoTopic.setRows(5);
+        txtADisplayInfoTopic.setText("Selected notes will appear here");
+        jScrollPane1.setViewportView(txtADisplayInfoTopic);
 
         topicOption.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         topicOption.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Systems", "Measuring Success", "Intro to the SDLC", "Waterfall Model", "Gantt Chart", "Unified Modeling Language (UML)", "Other Helpful Info" }));
@@ -108,11 +123,11 @@ public class StudyNotes extends javax.swing.JFrame {
             }
         });
 
-        go.setBackground(new java.awt.Color(0, 250, 0));
-        go.setText("Go");
-        go.addActionListener(new java.awt.event.ActionListener() {
+        btnGo.setBackground(new java.awt.Color(0, 250, 0));
+        btnGo.setText("Go");
+        btnGo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                goActionPerformed(evt);
+                btnGoActionPerformed(evt);
             }
         });
 
@@ -142,7 +157,7 @@ public class StudyNotes extends javax.swing.JFrame {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(go)
+                                .addComponent(btnGo)
                                 .addGap(47, 47, 47))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
@@ -167,7 +182,7 @@ public class StudyNotes extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(31, 31, 31)
-                        .addComponent(go))
+                        .addComponent(btnGo))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(back)))
@@ -181,27 +196,46 @@ public class StudyNotes extends javax.swing.JFrame {
         // TODO add your handling code here:
 
     }//GEN-LAST:event_topicOptionActionPerformed
-
+    /**
+     * Button to go back to main menu, set the main menu window visibility to true 
+     * and this menu to false
+     * @param evt - clicked button
+     */
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         mainWindow.setVisible(true);
         this.setVisible(false);
 
     }//GEN-LAST:event_backActionPerformed
+    /**
+     * Go button, when user wants to see information from a chosen topic
+     * See which topic user chose from combo box and display data
+     * @param evt - clicked button
+     */
+    private void btnGoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGoActionPerformed
+        //switch statement, for every index of the combo box, display corresponding
+        //toString of the element at the index
+        switch (topicOption.getSelectedIndex()) {
+            case 0 -> txtADisplayInfoTopic.setText(topicsToStudy[0].toString());
+            case 1 -> txtADisplayInfoTopic.setText(topicsToStudy[1].toString());
+            case 2 -> txtADisplayInfoTopic.setText(topicsToStudy[2].toString());
+            case 3 -> txtADisplayInfoTopic.setText(topicsToStudy[3].toString());
+            case 4 -> txtADisplayInfoTopic.setText(topicsToStudy[4].toString());
+            case 5 -> txtADisplayInfoTopic.setText(topicsToStudy[5].toString());
+            default -> txtADisplayInfoTopic.setText(topicsToStudy[6].toString());
+        }
 
-    private void goActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goActionPerformed
-        
-    }//GEN-LAST:event_goActionPerformed
+    }//GEN-LAST:event_btnGoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton back;
+    private javax.swing.JButton btnGo;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton go;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JComboBox<String> topicOption;
+    private javax.swing.JTextArea txtADisplayInfoTopic;
     // End of variables declaration//GEN-END:variables
 
 }

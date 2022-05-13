@@ -14,10 +14,15 @@ import java.util.Scanner;
  */
 public class Quiz extends javax.swing.JFrame {
 
+    //stores the users score
     int total = 0;
+    //to go back to the main window
     MominXuProjectManagement mainWindow;
+    //will store the ten questions as objects in the array
     Question[] questions = new Question[10];
+    //attributes of the question
     private String q, optA, optB, optC, optD, ans, reason;
+    //counters
     int counter = 0;
     int nextCounter = 1;
 
@@ -33,6 +38,7 @@ public class Quiz extends javax.swing.JFrame {
 
         readData();
 
+        //show the first question at the start
         quest.setText((questions[0]).getQ());
         a.setText((questions[0]).getA());
         b.setText((questions[0]).getB());
@@ -238,6 +244,8 @@ public class Quiz extends javax.swing.JFrame {
         b.setText((questions[0]).getB());
         c.setText((questions[0]).getC());
         d.setText((questions[0]).getD());
+        score.setText(" ");
+        recom.setText(" ");
 
         mainWindow.setVisible(true);
         this.setVisible(false);

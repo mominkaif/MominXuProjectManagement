@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -320,7 +321,7 @@ public class Quiz extends javax.swing.JFrame {
                 System.out.println(question.toString());
             }
         } catch (Exception e) {
-            System.out.println("ERROR! " + e);
+            JOptionPane.showMessageDialog(null, "FILE NOT FOUND!");
         }
     }
 

@@ -202,6 +202,8 @@ public class StudyNotes extends javax.swing.JFrame {
      * @param evt - clicked button
      */
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+        //clear text area after pressing back
+        txtADisplayInfoTopic.setText("");
         mainWindow.setVisible(true);
         this.setVisible(false);
 

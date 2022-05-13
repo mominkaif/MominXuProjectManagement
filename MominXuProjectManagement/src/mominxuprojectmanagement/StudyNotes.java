@@ -10,7 +10,9 @@ package mominxuprojectmanagement;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -55,7 +57,7 @@ public class StudyNotes extends javax.swing.JFrame {
         //try-catch to read the file and store the info into an array
         try {
             //reference file
-            File f = new File("src\\mominxuprojectmanagement\\study.txt");
+            InputStream f = Quiz.class.getResourceAsStream("study.txt");
             //attach scanner
             Scanner s = new Scanner(f);
             //loop a total of secen times for seven topics
@@ -76,8 +78,8 @@ public class StudyNotes extends javax.swing.JFrame {
                 studyMaterial = "";
             }
         //otherwise file not found, print error
-        } catch (FileNotFoundException e) {
-            System.out.println("ERROR! " + e);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "FILE NOT FOUND!");
         }
 
     }

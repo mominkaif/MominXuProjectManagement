@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author kaifm
  */
 public class Quiz extends javax.swing.JFrame {
-    
+
     int total = 0;
     MominXuProjectManagement mainWindow;
     Question[] questions = new Question[10];
@@ -26,19 +26,19 @@ public class Quiz extends javax.swing.JFrame {
      */
     public Quiz(MominXuProjectManagement m) {
         initComponents();
-        
+
         results.setEnabled(false);
-        
+
         mainWindow = m;
-        
+
         readData();
-        
+
         quest.setText((questions[0]).getQ());
         a.setText((questions[0]).getA());
         b.setText((questions[0]).getB());
         c.setText((questions[0]).getC());
         d.setText((questions[0]).getD());
-        
+
     }
 
     /**
@@ -230,50 +230,59 @@ public class Quiz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+
+        int counter = 0;
+        int nextCounter = 1;
+        quest.setText((questions[0]).getQ());
+        a.setText((questions[0]).getA());
+        b.setText((questions[0]).getB());
+        c.setText((questions[0]).getC());
+        d.setText((questions[0]).getD());
+
         mainWindow.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_backActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String selected = "";
-        
-        if(counter == 9){
-            
+
+        if (counter == 9) {
+
         }
-        
-        if(a.isSelected()){
+
+        if (a.isSelected()) {
             selected = a.getText();
-        } else if(b.isSelected()){
+        } else if (b.isSelected()) {
             selected = b.getText();
-        }else if(c.isSelected()){
+        } else if (c.isSelected()) {
             selected = c.getText();
-        }else if(d.isSelected()){
+        } else if (d.isSelected()) {
             selected = d.getText();
         }
-        
-        if(selected.equals(questions[counter].getAns())){
-            total +=1;
+
+        if (selected.equals(questions[counter].getAns())) {
+            total += 1;
         }
         why.setText(questions[counter].getReason());
         counter += 1;
         System.out.println(total);
-        
+
         jButton1.setEnabled(false);
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
         jButton1.setEnabled(true);
-        
+
         why.setText(" ");
         quest.setText((questions[nextCounter]).getQ());
         a.setText((questions[nextCounter]).getA());
         b.setText((questions[nextCounter]).getB());
         c.setText((questions[nextCounter]).getC());
         d.setText((questions[nextCounter]).getD());
-        
+
         nextCounter += 1;
-        if(nextCounter == 10){
+        if (nextCounter == 10) {
             next.setEnabled(false);
             results.setEnabled(true);
         }
@@ -281,12 +290,12 @@ public class Quiz extends javax.swing.JFrame {
 
     private void resultsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultsActionPerformed
         String recomend = " ";
-        if(total < 7){
+        if (total < 7) {
             recomend = "Please study more!";
-        }else{
+        } else {
             recomend = "You are well prepared!";
         }
-        score.setText("You got "+total+" correct answers out of 10 questions.");
+        score.setText("You got " + total + " correct answers out of 10 questions.");
         recom.setText(recomend);
     }//GEN-LAST:event_resultsActionPerformed
 
@@ -308,7 +317,7 @@ public class Quiz extends javax.swing.JFrame {
                 reason = s.nextLine();
                 Question question = new Question(q, optA, optB, optC, optD, ans, reason);
                 questions[i] = question;
-                
+
                 System.out.println(question.toString());
             }
         } catch (FileNotFoundException e) {

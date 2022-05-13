@@ -22,7 +22,7 @@ public class StudyNotes extends javax.swing.JFrame {
     //instantiate array of StudyTopics
     private StudyTopics[] topicsToStudy = new StudyTopics[totalNumTopics];
     //for main menu
-    private MominXuProjectManagement mainWindow;
+    MominXuProjectManagement mainWindow;
 
     /**
      * Creates new form StudyNotes

@@ -6,65 +6,65 @@ D) Car
 The Client
 The client is a key component, they request a solution and provides money.
 Which questions should you ask when measuring success?
-Is easy to maintain and manage?
-Is scalable and dynamic to meet the needs of the client?
-There is a efficient support system available to the client?
-All of the above.
+A) Is easy to maintain and manage?
+B) Is scalable and dynamic to meet the needs of the client?
+C) There is a efficient support system available to the client?
+D) All of the above.
 All of the above.
 All the above options are question you should ask when measuring success.
 What does high-quality software require?
-Organization
-Money
-Rigorous planning
-Both A and C are correct.
+A) Organization
+B) Money
+C) Rigorous planning
+D) Both A and C are correct.
 Both A and C are correct.
 High-quality software needs organization and rigorous planning
 What does SDLC stand for?
-Super Duper Local Computer.
-Software Development Life Cycle
-Software Development Literature Composition
-Software Development Live Circle
+A) Super Duper Local Computer.
+B) Software Development Life Cycle
+C) Software Development Literature Composition
+D) Software Development Live Circle
 Software Development Life Cycle
 SDLC stands for Software Development Life Cycle
 Who developed the Waterfall Model?
-Dr Winston Royce
-David Xu
-Galileo Galilei
-None of the above.
+A) Dr Winston Royce
+B) David Xu
+C) Galileo Galilei
+D) None of the above.
 Dr Winston Royce
 Dr Winston Royce developed the Waterfall Model.
 What is a Gantt chart good for?
-Nothing
-Store changes
-Visualization
-Persuasion
+A) Nothing
+B) Store changes
+C) Visualization
+D) Persuasion
 Visualization
 Gantt Chart is an extremely helpful tool to visualize progress
 Based on the Waterfall Model, what should developers do if they notice a mistake?
-Backup
-Ignore
-Assign to someone else and continue
-None of the above
+A) Backup
+B) Ignore
+C) Assign to someone else and continue
+D) None of the above
 Backup
 If noticed a mistake, you should return to work on the previous phase.
 Which of the following is the correct color combo for a Gantt chart?
-Red and yellow
-Blue and Black
-Red and green
-Blue and red
+A) Red and yellow
+B) Blue and Black
+C) Red and green
+D) Blue and red
 Blue and red
 Red represents uncompleted work. Blue represents completed work.
 What does UML stand for?
-Unique Method Loop
-Unified Modeling Language
-Unified Method Logistics
-Both A and B
+A) Unique Method Loop
+B) Unified Modeling Language
+C) Unified Method Logistics
+D) Both A and B
 Unified Modeling Language
 UML Stands for Unified Modeling Language.
 When is it cheapest to solve a problem in the SDLC cycle?
-Later the better
-In the middle
-Earlier the better
-It doesnt matter
+A) Later the better
+B) In the middle
+C) Earlier the better
+D) It doesnt matter
 Earlier the better
 Issues found earlier in the SDLC are much cheaper to fix than later on
